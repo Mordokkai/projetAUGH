@@ -11,8 +11,8 @@ uint8_t input[1];
 uint8_t output[1];
 
 void bidon(){
-	output[0] = (input[0]+input[0])*input[0];
-	output[0] = output[0]*input[0]+input[0]-2*input[0];
+	output[0] = (input[0]*3+input[0])*56;
+	output[0] += (input[0]-input[0]+input[0])*input[0];
 }
 
 // The top-level function for AUGH
