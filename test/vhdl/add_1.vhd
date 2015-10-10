@@ -7,8 +7,8 @@ use ieee.numeric_std.all;
 entity add_1 is
 	port (
 		output : out std_logic_vector(7 downto 0);
-		in_b : in  std_logic_vector(7 downto 0);
-		in_a : in  std_logic_vector(7 downto 0)
+		in_a : in  std_logic_vector(7 downto 0);
+		in_b : in  std_logic_vector(7 downto 0)
 	);
 end add_1;
 
