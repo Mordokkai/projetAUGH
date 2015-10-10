@@ -1,0 +1,39 @@
+INFO: Duplicating an Implem structure...
+Cleaning previous scheduling data...
+Building scheduler structures...
+Launching scheduling...
+Scheduling done.
+Extending components...
+Adding operators...
+Removing unused components...
+Removing components...
+Mapping...
+Connecting the system ports (clock, reset, start)...
+Post-processing done in 0.0413621 seconds.
+INFO: Updating the exec time of the duplicated Implem...
+Global timings for the PROC nodes : 'augh_main'=201
+Global timings for the STATE nodes : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Global timings for the LOOP nodes : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 200 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Global timings for the SWITCH :
+Internal timings for the CASE :
+Global timings for the Basic Blocks : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 72 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 (total 200)
+  Target frequency/period is : 1e+08 MHz / 10 ns
+  Total execution time : min 201 / avg 201 / max 201 (clock cycles)
+  Maximum latency : 3.212 ns
+  Maximum clock cycles per control step : 1
+First infinite loop, internal execution time : min 200 / avg 200 / max 200 (clock cycles)
+INFO: Getting the size of the duplicated Implem...
++-----------+-------+----------------+----------------+----------------+
+| Component |   #   |     dsp48e     |      dff       |      lut6      |
++-----------+-------+----------------+----------------+----------------+
+|        or |     1 |      0   0.00% |      0   0.00% |      8   0.06% |
+|       and |     2 |      0   0.00% |      0   0.00% |     16   0.12% |
+|       fsm |     1 |      0   0.00% |    611  15.07% |    820   6.40% |
+|       reg |   157 |      0   0.00% |   3444  84.93% |      0   0.00% |
+|       sub |    14 |      0   0.00% |      0   0.00% |    465   3.63% |
+|       add |    12 |      0   0.00% |      0   0.00% |    384   3.00% |
+|       mux |   161 |      0   0.00% |      0   0.00% |  10678  83.30% |
+|       mul |    14 |     28 100.00% |      0   0.00% |    448   3.49% |
++-----------+-------+----------------+----------------+----------------+
+|     Total |       |     28         |   4055         |  12819         |
++-----------+-------+----------------+----------------+----------------+

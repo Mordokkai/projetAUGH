@@ -1,0 +1,151 @@
+
+# This activates display of all executed commands
+commands-disp
+
+echo ==========================================
+echo Loading design...
+pause
+load
+
+echo ==========================================
+echo Display of the loaded design...
+pause
+hier disp-tree
+
+echo ==========================================
+echo Applying initial simplifications...
+pause
+hier upd
+
+echo ==========================================
+echo Display some more details...
+pause
+hier disp-details
+hier time disp
+
+
+
+# Examples of transformations
+
+#op add add:8/sub:8/mul:6
+#array-replace idct_z1
+
+# Wire the conditions in hierarchical order
+
+#hier node-switch find label maxval wire one-cycle
+#hier upd
+#hier node-switch find label minval wire one-cycle
+#hier upd
+
+# Unroll the FOR loops in hierarchical order
+
+#hier node-loop find label loopscale     unroll-seq full  # Scale
+#hier node-loop find label looptranspose unroll-seq full  # Transposition
+#hier node-loop find label loopdescale   unroll-seq full  # Descale
+
+#hier node-loop find label loopinput  unroll-seq full  # Input FIFO
+#hier node-loop find label loopoutput unroll-seq full  # Output FIFO
+
+#hier node-loop find label loopidct1 unroll-seq 2  # First IDCT loop
+#hier node-loop find label loopidct2 unroll-seq 2  # Second IDCT loop
+
+#hier upd
+
+# Observe what was done
+
+#hier disp-skel
+#hier disp-details
+#hier time disp
+
+
+
+echo ==========================================
+echo Find the needed hardware resources...
+pause
+resources-build
+
+echo ==========================================
+echo Display the needed hardware resources...
+pause
+resources-view
+
+echo ==========================================
+echo Launch scheduling onto the necessary resources...
+pause
+sched schedule
+
+echo ==========================================
+echo Display the new design latency...
+pause
+hier disp-details
+hier time disp
+
+
+
+echo ==========================================
+echo The design latency is terrifying.
+echo Let's apply some transformations to try and improve it.
+echo Let's wire the conditions...
+pause
+#hier node-switch list
+hier node-switch find label maxval wire one-cycle
+hier upd
+hier node-switch find label minval wire one-cycle
+hier upd
+
+echo ==========================================
+echo And let's unroll some simple loops...
+pause
+#hier node-loop list
+hier node-loop find label loopscale     unroll-seq full  # Scale
+hier node-loop find label looptranspose unroll-seq full  # Transposition
+hier node-loop find label loopdescale   unroll-seq full  # Descale
+hier upd
+
+echo ==========================================
+echo And let's replace some arrays by registers...
+pause
+op mem-replace-direct idct_z1
+op mem-replace-direct idct_z2
+op mem-replace-direct idct_z3
+op mem-replace-direct idct_2d_yc
+
+echo ==========================================
+echo And let's add some operators...
+pause
+op add add:8/sub:8/mul:6
+
+echo ==========================================
+echo And launch scheduling again...
+pause
+resources-build
+sched schedule
+hier disp-details
+hier time disp
+
+echo ==========================================
+echo Better, isn't it?
+pause
+
+
+
+echo ==========================================
+echo Generate the netlist representation...
+pause
+postprocess
+
+echo ==========================================
+echo Estimation of the design size...
+pause
+techno eval
+
+echo ==========================================
+echo Generation of VHDL and XST synthesis project files...
+pause
+vhdl
+plugin cmd xilinx gen-xst-project
+
+echo ==========================================
+echo Little system symmary about this AUGH run...
+pause
+augh-resource

@@ -1,0 +1,30 @@
+
+# This activates display of all executed commands
+commands-disp
+
+echo Chargement plugin xilinx
+plugin load xilinx
+
+echo Chargement du fichier c
+load idct.c
+
+echo Simplifications
+hier upd
+
+echo Select target
+techno set-board xupv5
+
+echo Display
+hier time disp
+hier clockcycles
+
+echo Mapping
+postprocess
+
+echo Evaluation of design size
+techno eval
+
+echo Generation of VHDL
+vhdl
+
+

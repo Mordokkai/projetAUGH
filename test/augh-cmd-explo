@@ -1,0 +1,39 @@
+
+commands-disp
+
+load
+hier upd
+
+# Configuration of exploration core verbosity
+#core debug-show-avail-fd
+core debug-show-select-fd
+
+# For debug
+sh rm -f log.forksynth
+forksynth redirect both append log.forksynth
+sh touch log.forksynth
+
+core graph-file open exploration-data
+core dupimplem redirect file log.dupimplem
+
+#core fd-weight-exact
+#core elabo-fd-max 1
+
+# Launch exploration
+core elaborate
+
+postprocess
+
+#hier disp-tree
+hier time upd
+hier time disp
+hier clockcycles
+
+techno eval
+
+vhdl
+
+plugin cmd xilinx gen-xst-project
+
+augh-resource
+

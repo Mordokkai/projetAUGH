@@ -1,0 +1,51 @@
+
+This tutorial is for complete beginners with AUGH.
+It is composed of:
+- the main source file: idct.c
+- a Makefile
+- two command files for AUGH: augh-cmd-sched and augh-cmd-explo
+
+The two command files are meant to be read by AUGH.
+They contain commands for AUGH's internal command interpreter.
+
+==========================================
+Set the environment
+==========================================
+
+Make sure the environment variable PATH contains the directory where
+AUGH is installed.
+
+==========================================
+Launch AUGH
+==========================================
+
+First, launch "make sched".
+This launches a somewhat interactive and explained synthesis flow.
+
+Then, launch "make explo".
+This enables another flow, where AUGH automatically explores various solutions.
+
+==========================================
+Information about AUGH commands
+==========================================
+
+Have a look at the commands in the script files.
+
+For more information about these commands, please use the internal command
+interpreter. To launch it, use this command line:
+
+	augh -i
+
+This launched AUGH in interactive mode.
+In the AUGH prompt, type 'help' for a short description of available commands.
+
+Note 1: The command interpreter is hierarchical.
+There are sub- command interpreters that correspond to modules inside AUGH.
+For example, the module 'hier' enables to explore and manipulate the hierachical
+graph that represents the current design. For help about commands in the
+module 'hier', type 'hier help' in the AUGH prompt.
+
+Note 2: Many commands require that a design is loaded.
+The easiest way to have manual control after a design is loaded is to add
+the command 'manual' after the command 'load' in one of the scripts.
+This stops the execution of the script and launches the manual mode.
