@@ -12,7 +12,8 @@ echo Simplifications
 hier upd
 
 echo Select target
-techno set-board xupv5
+techno set-techno virtex-5
+techno set-chip xc5vlx50t
 
 echo Display
 hier time disp
@@ -27,4 +28,5 @@ techno eval
 echo Generation of VHDL
 vhdl
 
-
+backend-gen-prj
+backend-launch
