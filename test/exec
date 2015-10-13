@@ -28,5 +28,5 @@ techno eval
 echo Generation of VHDL
 vhdl
 
-backend-gen-prj
-backend-launch
+#backend-gen-prj
+#backend-launch
