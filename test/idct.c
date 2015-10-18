@@ -7,20 +7,40 @@ uint8_t stdin;
 uint8_t  stdout;
 
 // Arrays used for input and output
-uint8_t input[1];
+uint8_t input[3];
 uint8_t output[1];
 
 void bidon(){
-	output[0] = (input[0]*3+input[0])*56;
-	output[0] += (input[0]-input[0]+input[0])*input[0];
+	uint8_t inter;
+	if(input[3]==0){
+		inter=input[0];
+	}
+	else
+		inter=input[1];
+
+
+    int i=0;
+    for(i=0;i<100000;i++)
+        inter*=inter;
+
+
+
+
+
+
+	if(input[3]==0){
+		output[0]=input[0];
+	}
+	else
+		output[0]=inter;
 }
 
 // The top-level function for AUGH
 void augh_main () {
 
 	do {
-
-		fifo_read(stdin, &input[0]);
+		unsigned k=0;
+		for(k=0;k<5;k++) fifo_read(stdin, &input[k]);
 
 		bidon();
 
