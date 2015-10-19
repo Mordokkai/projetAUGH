@@ -7,17 +7,17 @@ uint8_t stdin;
 uint8_t  stdout;
 
 // Arrays used for input and output
-uint8_t input[5];
+uint8_t input[4];
 uint8_t output[1];
 
 void bidon(){
 	uint8_t inter;
-	if(input[5]==0){
-		inter=input[1];
+	if(input[4]==0){
+		inter=input[0];
 	}
 	else
-		inter=input[2];
-	if(input[5]==0){
+		inter=input[1];
+	if(input[4]==0){
 		output[0]=input[0];
 	}
 	else
