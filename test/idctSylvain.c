@@ -19,6 +19,7 @@ void bidon(){
 		inter=input[2];
 	if(input[3]==0){
 		output[0]=input[0];
+	}
 	else
 		output[0]=inter;
 }

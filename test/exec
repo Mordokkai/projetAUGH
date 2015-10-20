@@ -6,7 +6,7 @@ echo Chargement plugin xilinx
 plugin load xilinx
 
 echo Chargement du fichier c
-load idct.c
+load idctSylvain.c
 
 echo Simplifications
 hier upd
