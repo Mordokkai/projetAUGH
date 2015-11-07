@@ -8,17 +8,17 @@ entity fsm_4 is
 	port (
 		clock : in  std_logic;
 		reset : in  std_logic;
+		out0 : out std_logic;
+		in1 : in  std_logic;
+		out3 : out std_logic;
+		out4 : out std_logic;
 		out8 : out std_logic;
 		in2 : in  std_logic;
 		out9 : out std_logic;
 		out13 : out std_logic;
 		out19 : out std_logic;
 		out22 : out std_logic;
-		in0 : in  std_logic;
-		out0 : out std_logic;
-		in1 : in  std_logic;
-		out3 : out std_logic;
-		out4 : out std_logic
+		in0 : in  std_logic
 	);
 end fsm_4;
 
@@ -60,7 +60,7 @@ begin
 
 	process (
 		-- Inputs of the FSM
-		reset, in2, in0, in1,
+		reset, in1, in2, in0,
 		-- Current state
 		state_cur
 	)

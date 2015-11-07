@@ -6,10 +6,10 @@ entity top is
 		clock : in  std_logic;
 		reset : in  std_logic;
 		start : in  std_logic;
+		stdout_ack : in  std_logic;
 		stdin_ack : in  std_logic;
 		stdout_data : out std_logic_vector(7 downto 0);
 		stdout_rdy : out std_logic;
-		stdout_ack : in  std_logic;
 		stdin_data : in  std_logic_vector(7 downto 0);
 		stdin_rdy : out std_logic
 	);
@@ -21,18 +21,17 @@ architecture augh of top is
 
 	component output is
 		port (
-			clk : in  std_logic;
 			wa0_addr : in  std_logic;
 			wa0_en : in  std_logic;
 			ra0_addr : in  std_logic;
 			wa0_data : in  std_logic_vector(7 downto 0);
-			ra0_data : out std_logic_vector(7 downto 0)
+			ra0_data : out std_logic_vector(7 downto 0);
+			clk : in  std_logic
 		);
 	end component;
 
 	component input is
 		port (
-			clk : in  std_logic;
 			ra1_data : out std_logic_vector(7 downto 0);
 			ra1_addr : in  std_logic_vector(1 downto 0);
 			wa0_addr : in  std_logic_vector(1 downto 0);
@@ -41,7 +40,8 @@ architecture augh of top is
 			wa0_data : in  std_logic_vector(7 downto 0);
 			ra0_data : out std_logic_vector(7 downto 0);
 			ra2_data : out std_logic_vector(7 downto 0);
-			ra2_addr : in  std_logic_vector(1 downto 0)
+			ra2_addr : in  std_logic_vector(1 downto 0);
+			clk : in  std_logic
 		);
 	end component;
 
@@ -73,17 +73,17 @@ architecture augh of top is
 		port (
 			clock : in  std_logic;
 			reset : in  std_logic;
+			out0 : out std_logic;
+			in1 : in  std_logic;
+			out3 : out std_logic;
+			out4 : out std_logic;
 			out8 : out std_logic;
 			in2 : in  std_logic;
 			out9 : out std_logic;
 			out13 : out std_logic;
 			out19 : out std_logic;
 			out22 : out std_logic;
-			in0 : in  std_logic;
-			out0 : out std_logic;
-			in1 : in  std_logic;
-			out3 : out std_logic;
-			out4 : out std_logic
+			in0 : in  std_logic
 		);
 	end component;
 
@@ -91,9 +91,6 @@ architecture augh of top is
 
 	signal sig_clock : std_logic;
 	signal sig_reset : std_logic;
-	signal sig_35 : std_logic_vector(7 downto 0);
-	signal sig_36 : std_logic_vector(7 downto 0);
-	signal sig_37 : std_logic_vector(7 downto 0);
 	signal sig_25 : std_logic;
 	signal sig_26 : std_logic;
 	signal sig_27 : std_logic;
@@ -104,6 +101,9 @@ architecture augh of top is
 	signal sig_32 : std_logic_vector(7 downto 0);
 	signal sig_33 : std_logic_vector(7 downto 0);
 	signal sig_34 : std_logic_vector(7 downto 0);
+	signal sig_35 : std_logic_vector(7 downto 0);
+	signal sig_36 : std_logic_vector(7 downto 0);
+	signal sig_37 : std_logic_vector(7 downto 0);
 	signal sig_start : std_logic;
 
 	-- Other inlined components
@@ -128,25 +128,25 @@ begin
 	-- Instantiation of components
 
 	output_i : output port map (
-		clk => sig_clock,
-		wa0_addr => sig_29,
-		wa0_en => sig_28,
-		ra0_addr => sig_26,
+		wa0_addr => sig_27,
+		wa0_en => sig_26,
+		ra0_addr => sig_31,
 		wa0_data => mux_21,
-		ra0_data => stdout_data
+		ra0_data => stdout_data,
+		clk => sig_clock
 	);
 
 	input_i : input port map (
-		clk => sig_clock,
 		ra1_data => sig_37,
 		ra1_addr => "01",
 		wa0_addr => mux_13,
-		wa0_en => sig_25,
+		wa0_en => sig_30,
 		ra0_addr => "10",
 		wa0_data => stdin_data,
 		ra0_data => sig_36,
 		ra2_data => sig_35,
-		ra2_addr => "00"
+		ra2_addr => "00",
+		clk => sig_clock
 	);
 
 	add_1_i : add_1 port map (
@@ -170,33 +170,33 @@ begin
 	fsm_4_i : fsm_4 port map (
 		clock => sig_clock,
 		reset => sig_reset,
-		out8 => sig_31,
-		in2 => sig_start,
-		out9 => sig_30,
-		out13 => sig_29,
-		out19 => sig_28,
-		out22 => sig_27,
-		in0 => stdout_ack,
 		out0 => stdout_rdy,
 		in1 => stdin_ack,
-		out3 => sig_26,
-		out4 => sig_25
+		out3 => sig_31,
+		out4 => sig_30,
+		out8 => sig_29,
+		in2 => sig_start,
+		out9 => sig_28,
+		out13 => sig_27,
+		out19 => sig_26,
+		out22 => sig_25,
+		in0 => stdout_ack
 	);
 
 	-- Behaviour of component 'mux_21' model 'mux'
 	mux_21 <=
-		(repeat(8, sig_29) and sig_33) or
-		(repeat(8, sig_27) and sig_32);
+		(repeat(8, sig_25) and sig_32) or
+		(repeat(8, sig_27) and sig_33);
 
 	-- Behaviour of component 'mux_13' model 'mux'
 	mux_13 <=
-		(repeat(2, sig_30) and "10") or
-		(repeat(2, sig_31) and "01");
+		(repeat(2, sig_29) and "01") or
+		(repeat(2, sig_28) and "10");
 
 	-- Behaviour of component 'mux_5' model 'mux'
 	mux_5 <=
-		(repeat(8, sig_29) and sig_37) or
-		(repeat(8, sig_27) and sig_34);
+		(repeat(8, sig_25) and sig_34) or
+		(repeat(8, sig_27) and sig_37);
 
 	-- Remaining signal assignments
 	-- Those who are not assigned by component instantiation
@@ -208,6 +208,6 @@ begin
 	-- Remaining top-level ports assignments
 	-- Those who are not assigned by component instantiation
 
-	stdin_rdy <= sig_25;
+	stdin_rdy <= sig_30;
 
 end architecture;

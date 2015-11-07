@@ -13,7 +13,7 @@ hier upd
 
 echo Select target
 techno set-techno virtex-5
-techno set-chip xc5vlx110t
+techno set-chip xc5vlx50t
 
 echo Display
 hier time disp

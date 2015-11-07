@@ -7,7 +7,6 @@ use ieee.numeric_std.all;
 
 entity input is
 	port (
-		clk : in  std_logic;
 		ra1_data : out std_logic_vector(7 downto 0);
 		ra1_addr : in  std_logic_vector(1 downto 0);
 		wa0_addr : in  std_logic_vector(1 downto 0);
@@ -16,7 +15,8 @@ entity input is
 		wa0_data : in  std_logic_vector(7 downto 0);
 		ra0_data : out std_logic_vector(7 downto 0);
 		ra2_data : out std_logic_vector(7 downto 0);
-		ra2_addr : in  std_logic_vector(1 downto 0)
+		ra2_addr : in  std_logic_vector(1 downto 0);
+		clk : in  std_logic
 	);
 end input;
 architecture augh of input is

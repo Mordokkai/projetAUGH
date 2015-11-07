@@ -7,12 +7,12 @@ use ieee.numeric_std.all;
 
 entity output is
 	port (
-		clk : in  std_logic;
 		wa0_addr : in  std_logic;
 		wa0_en : in  std_logic;
 		ra0_addr : in  std_logic;
 		wa0_data : in  std_logic_vector(7 downto 0);
-		ra0_data : out std_logic_vector(7 downto 0)
+		ra0_data : out std_logic_vector(7 downto 0);
+		clk : in  std_logic
 	);
 end output;
 architecture augh of output is
