@@ -11,15 +11,15 @@ entity input is
 		wa0_en : in  std_logic;
 		ra0_addr : in  std_logic_vector(1 downto 0);
 		wa0_data : in  std_logic_vector(7 downto 0);
-		clk : in  std_logic;
-		ra0_data : out std_logic_vector(7 downto 0)
+		ra0_data : out std_logic_vector(7 downto 0);
+		clk : in  std_logic
 	);
 end input;
 architecture augh of input is
 
 	-- Embedded RAM
 
-	type ram_type is array (0 to 2) of std_logic_vector(7 downto 0);
+	type ram_type is array (0 to 3) of std_logic_vector(7 downto 0);
 	signal ram : ram_type := (others => (others => '0'));
 
 
@@ -60,6 +60,6 @@ begin
 
 	-- The Read side (the outputs)
 
-	ra0_data <= ram( to_integer(ra0_addr) ) when to_integer(ra0_addr) < 3 else (others => '-');
+	ra0_data <= ram( to_integer(ra0_addr) );
 
 end architecture;

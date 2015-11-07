@@ -1,0 +1,24 @@
+Comment ajouter un plugin ?
+
+copier le répertoire src/plugins/example sous un autre nom genre src/plugins/newplugin
+
+renommer le fichier example.c en newplugin.c
+
+faire rechercher/remplacer de example par newplugin dans le Makefile dans src/plugins/newplugin
+
+toujours dans src/plugin faire "make clean" puis "make"
+
+Passer dans le dossier supérieur src/plugins
+
+Dans ce dossier il faut rajouter le nouveau plugin, recherchez les endroits où example apparaît et rajoutez newplugin en plus
+
+Faites le make
+
+Puis on passe à la compilation du logiciel augh:
+
+retour dans le dossier augh/
+
+autoreconf -vi puis ./configure puis make puis make install
+
+Fini
+ 
