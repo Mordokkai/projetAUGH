@@ -15,18 +15,55 @@ echo Select target
 techno set-techno virtex-5
 techno set-chip xc5vlx50t
 
+pause
+
 echo Display
 hier time disp
 hier clockcycles
 
-echo Mapping
+pause
+
+echo Recherche resources hardware
+resources-build
+resources-view
+
+pause
+
+echo Scheduling
+sched schedule
+
+pause
+
+echo Affichage nouvelle latence
+hier disp-details
+hier time disp 
+
+pause
+
+
+
+
+echo Postprocess
 postprocess
+
+pause
 
 echo Evaluation of design size
 techno eval
 
+pause
+
 echo Generation of VHDL
 vhdl
 
+pause
+
+echo Generation fichiers projets xst
+plugin cmd xilinx gen-xst-project
+
+pause
+
+echo Ressources augh
+augh-resource
 #backend-gen-prj
 #backend-launch
