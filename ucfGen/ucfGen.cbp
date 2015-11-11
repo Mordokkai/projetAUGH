@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="liste.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="liste.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -38,6 +42,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="paths.h" />
+		<Unit filename="printUcfISE.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="printUcfISE.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />
