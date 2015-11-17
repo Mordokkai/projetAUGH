@@ -36,6 +36,8 @@ clean:
 	@echo >> $@ "postprocess"
 	@echo >> $@ "techno eval"
 	@echo >> $@ "vhdl"
+	@echo >> $@ "plugin load falsepath"
+	@echo >> $@ "map postmap-timing true"
 	
 %/vhdl: %/*.c %/augh-exec
 	rm -rf $@
