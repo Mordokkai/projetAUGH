@@ -31,13 +31,15 @@ clean:
 	@echo >> $@ "hier upd"
 	@echo >> $@ "techno set-techno virtex-5"
 	@echo >> $@ "techno set-chip xc5vlx50t"
+	@echo >> $@ "target-freq 100M"
 	@echo >> $@ "hier time disp"
 	@echo >> $@ "hier clockcycles"
+	@echo >> $@ "map postmap-timing true"
 	@echo >> $@ "postprocess"
 	@echo >> $@ "techno eval"
 	@echo >> $@ "vhdl"
 	@echo >> $@ "plugin load falsepath"
-	@echo >> $@ "map postmap-timing true"
+	
 	
 %/vhdl: %/*.c %/augh-exec
 	rm -rf $@
