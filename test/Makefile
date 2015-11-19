@@ -1,25 +1,20 @@
 
 TARGET = 
 
+TARGETS = faux-chemins/1-faux-chemin/vhdl
+
 SRC = idct.c
 
 
 .PHONY: sched explo clean
 
-all: faux-chemins/1-faux-chemin/vhdl
-
-sched:
-	rm -rf vhdl xstprj
-	augh -v $(TARGET) -script augh-cmd-sched $(SRC)
-
-explo:
-	rm -rf vhdl xstprj
-	augh -v $(TARGET) -script augh-cmd-explo $(SRC)
+all: $(TARGETS)
 
 clean:
 	rm -rf vhdl xstprj exploration-data fork-output dupimplem.stdout
+	rm -rf $(TARGETS)
 
-%/augh-exec:
+%/auto-augh-exec:
 	@echo "generating augh script"
 	@echo > $@ "#generated script"
 	@echo >> $@ "#do not modify, may be overwriten"
@@ -39,10 +34,14 @@ clean:
 	@echo >> $@ "techno eval"
 	@echo >> $@ "vhdl"
 	@echo >> $@ "plugin load falsepath"
+	@echo >> $@ "plugin cmd falsepath search"
 	
 	
-%/vhdl: %/*.c %/augh-exec
+%/vhdl: %/*.c %/auto-augh-exec
 	rm -rf $@
-	augh -v $(TARGET) -script `dirname $@`/augh-exec
-	
+	@if [ -f `dirname $@`/augh-exec ] ; then \
+	    echo > `dirname $@`/auto-augh-exec "#(semi)auto-generated file, DO NOT MODIFY"; \
+	    cat `dirname $@`/augh-exec >> `dirname $@`/auto-augh-exec ; \
+	fi
+	augh -v $(TARGET) -script `dirname $@`/auto-augh-exec
 
