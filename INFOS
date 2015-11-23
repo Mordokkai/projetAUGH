@@ -1,0 +1,5 @@
+INFOS:
+
+on a une fonction d'affichage qui donne la liste des composants fils de celui-ci. Donc si on détermine la liste des fils effectivement atteints au cours de tous les états, on peut faire une soustraction des deux ensembles pour déterminer les falsepaths.
+
+Restriction: je pense que l'on doit se restreindre aux étudier commandant les muxs et les write enable (j'ai d ailleurs l'impression que c'est un peu ce qui est déjà fait)
