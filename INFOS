@@ -1,9 +1,16 @@
 INFOS:
 
-on a une fonction d'affichage qui donne la liste des composants fils de celui-ci. Donc si on détermine la liste des fils effectivement atteints au cours de tous les états, on peut faire une soustraction des deux ensembles pour déterminer les falsepaths.
+FAUX
+(on a une fonction d'affichage qui donne la liste des composants fils de celui-ci. Donc si on détermine la liste des fils effectivement atteints au cours de tous les états, on peut faire une soustraction des deux ensembles pour déterminer les falsepaths.)
 
 Restriction: je pense que l'on doit se restreindre aux étudier commandant les muxs et les write enable (j'ai d ailleurs l'impression que c'est un peu ce qui est déjà fait)
 
 chain_list* fsm_outval_liststates_val1(netlist_fsm_outval_t* outval): permettra de déterminer pour un port de sortie de la fsm (donc potentiellement calé sur un multiplexeur) quand est ce qu'il est activé (à quel état).
 
 chain_list* port_getfsmstates_set1(netlist_port_t* port): fait appel à la fonction du dessus. Pour un port d'un composat quelconque, elle retourne la liste des états au cours duquel il est activé => hyper hyper hyper util
+
+
+
+1ère idée d'algo:
+
+
