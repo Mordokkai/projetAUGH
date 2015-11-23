@@ -11,6 +11,10 @@ chain_list* port_getfsmstates_set1(netlist_port_t* port): fait appel à la fonct
 
 
 
-1ère idée d'algo:
+Actuellement ce que l'on sait:
+	-> on sait dire quels sont les signaux reliés à un multiplexeur et à quels états ils sont activés
+	-> la liste de tous les composants et pour chacun quels sont ses fils
+	-> l'état initial et les suivant
+	-> ...
 
 
