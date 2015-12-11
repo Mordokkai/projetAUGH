@@ -1,8 +1,7 @@
 
 TARGET =
 
-TARGETS = faux-chemins/1-faux-chemin/vhdl faux-chemins/2-sortie-active/vhdl faux-chemins/3-multicycles/vhdl
-
+TARGETS = faux-chemins/1-faux-chemin/vhdl faux-chemins/2-sortie-active/vhdl faux-chemins/3-multicycles/vhdl faux-chemins/3-sortie-active/vhdl
 
 SRC = idct.c
 
@@ -36,9 +35,14 @@ clean:
 	@echo >> $@ "vhdl"
 	@echo >> $@ "plugin load falsepath"
 	@echo >> $@ "plugin cmd falsepath search"
+<<<<<<< HEAD
 	cp $@ .
 
 
+=======
+
+
+>>>>>>> d4d8c336899b8f7bc9facaddda838d02f7da99ed
 %/vhdl: %/*.c %/auto-augh-exec
 	rm -rf $@
 	@if [ -f `dirname $@`/augh-exec ] ; then \
