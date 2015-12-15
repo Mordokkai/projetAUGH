@@ -35,14 +35,9 @@ clean:
 	@echo >> $@ "vhdl"
 	@echo >> $@ "plugin load falsepath"
 	@echo >> $@ "plugin cmd falsepath search"
-<<<<<<< HEAD
-	cp $@ .
 
 
-=======
 
-
->>>>>>> d4d8c336899b8f7bc9facaddda838d02f7da99ed
 %/vhdl: %/*.c %/auto-augh-exec
 	rm -rf $@
 	@if [ -f `dirname $@`/augh-exec ] ; then \
